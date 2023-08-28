@@ -10,6 +10,7 @@ export const initiateApp = (app, express) => {
   app.use(express.json())
   connectionDB()
   app.use(cors()) // allow anyone
+  app.get('/', (req, res) => res.send('Hello World!'))
   
   app.use('/category', routers.categoryRouter)
   app.use('/subCategory', routers.subCategoryRouter)
@@ -28,7 +29,6 @@ export const initiateApp = (app, express) => {
 
   changeStatusOfCoupons()
   gracefulShutdown()
-  app.get('/', (req, res) => res.send('Hello World!'))
   app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 }
 
